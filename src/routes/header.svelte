@@ -1,134 +1,30 @@
 <script lang="ts">
 	export let logo = "OGAWA";
-
 </script>
-<header class = "header">
 
-	<div class="brand">
-    	<img src="/logo.png" alt="Logo" class="Img"/>
-    	<div class="logo">{logo}</div>
-	<nav>
-      <ul class = "selectionbar">
-        <li><a href="#sanpham">Bộ sưu tập</a></li>
-    	  <li><a href="#vetrangweb">Về chúng tôi</a></li>
-    	  <li><a href="#muasam">Mua sắm</a></li>
-    	  <li><a href="#tintuc">Tin tức</a></li>
-    	  <li><a href="#cuahang">Cửa hàng</a></li>
-    	  <li><a href="#cuahang">Liên hệ</a></li>
-      </ul>
-	  <div class="underline-indicator"></div> 
-    </nav>
-	<div class="header-icons">
-      <div class="lang-switcher">VIE / ENG</div>
-      <img src="/search.png" alt="Search" class="search-icon"/>
-      <img src="/shop.png" alt="Search" class="shop-icon"/>
+<header class="fixed top-0 left-0 right-0 bg-white z-50">
+  <div class="h-28"></div>
+  <div class="px-40 py-4 flex items-center">
+    <div class="flex items-center">
+      <img src="/logo.png" alt="Logo" class="w-13 h-13 -mt-2 -ml-1.5"/>
+      <div class="text-2xl font-bold text-primary tracking-tight">{logo}</div>
     </div>
-  	</div>
+    
+    <nav class="ml-24">
+      <ul class="flex gap-10">
+        <li><a href="#sanpham" class="uppercase text-sm font-light hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-1 after:w-0 after:bg-black after:transition-all relative pb-1">Bộ sưu tập</a></li>
+        <li><a href="#vetrangweb" class="uppercase text-sm font-light hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-1 after:w-0 after:bg-black after:transition-all relative pb-1">Về chúng tôi</a></li>
+        <li><a href="#muasam" class="uppercase text-sm font-light hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-1 after:w-0 after:bg-black after:transition-all relative pb-1">Mua sắm</a></li>
+        <li><a href="#tintuc" class="uppercase text-sm font-light hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-1 after:w-0 after:bg-black after:transition-all relative pb-1">Tin tức</a></li>
+        <li><a href="#cuahang" class="uppercase text-sm font-light hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-1 after:w-0 after:bg-black after:transition-all relative pb-1">Cửa hàng</a></li>
+        <li><a href="#lienhe" class="uppercase text-sm font-light hover:after:w-full after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-1 after:w-0 after:bg-black after:transition-all relative pb-1">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-5 ml-auto">
+      <div class="text-sm font-medium cursor-pointer">VIE / ENG</div>
+      <img src="/search.png" alt="Search" class="w-5 h-5 cursor-pointer"/>
+      <img src="/shop.png" alt="Shop" class="w-5 h-5 cursor-pointer"/>
+    </div>
+  </div>
 </header>
-
-<style>
-	.header{
-		position: relative;
-    height: 61px;
-    background-color: #FFFFFF;
-		padding-left: 160px;
-		padding-right: 160px;
-    margin-top: 110px;
-	}
-	.brand {
-    display: flex;
-    align-items: center;
-  	}
-  	.logo {
-    font-size: 22px;  
-	  font-weight: bold;            
-    line-height: 1;             
-    color: #51843C;
-    font-family: 'Arial', sans-serif;
-	  letter-spacing: -0.02em;
-  	}
-
-	nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 40px;
-  margin-left: 100px;
-}
-
-	/* TaskBar style */
-.selectionbar a {
-  color: #222222;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: 300;
-  font-family: 'Source Sans Pro', sans-serif;
-  position: relative; /* để chứa pseudo-element */
-  padding-bottom: 4px; /* tạo khoảng dưới để hiện underline */
-  transition: color 0.3s ease;
-}
-
-/* Pseudo-element tạo thanh đen */
-.selectionbar a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 5px;
-  width: 0;
-  background-color: black;
-  transition: width 0.3s ease;
-}
-
-/* Khi hover thì mở rộng chiều ngang của thanh */
-.selectionbar a:hover::after {
-  width: 100%;
-}
-	/*logo*/
-	.Img{
-		width: 52px;
-		height: 52px;
-		top: -8.5px;
-		left: -6px;
-	}
-	.header-icons {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      font-size: 14px;
-    }
-    /* Icon ngôn ngữ */
-    .lang-switcher {
-	  margin-left:100px;
-    cursor: pointer;
-    user-select: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    background-color: #fff;
-    font-weight: 500;
-    }
-    /* Icon tìm kiếm */
-    .search-icon {
-      cursor: pointer;
-      width: 20px;
-      height: 20px;
-      fill: #333;
-      transition: fill 0.3s ease;
-    }
-    .shop-icon {
-      cursor: pointer;
-      width: 20px;
-      height: 20px;
-      fill: #333;
-      transition: fill 0.3s ease;
-    }
-
-
-	@media (min-width: 640px) {
-		.header {
-			max-width: 1920px;
-		}
-	}
-</style>
