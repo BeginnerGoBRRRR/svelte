@@ -1,61 +1,187 @@
 <script lang="ts">
 	export let logo = "OGAWA";
 	let navOpen = false;
+
 </script>
-
-<header class="fixed top-0 left-0 right-0 bg-white z-50 px-4 md:px-8 py-2 shadow-sm">
-	<div class="max-w-7xl mx-auto flex items-center justify-between">
-		<div class="flex items-center gap-2">
-			<img src="/logo.png" alt="Logo" class="w-12 h-12 object-contain"/>
-			<div class="text-xl font-bold text-[#51843C]">{logo}</div>
-		</div>
-
-		<nav class={`${navOpen ? 'block' : 'hidden'} md:block absolute md:relative top-full left-0 right-0 bg-white md:bg-transparent shadow-md md:shadow-none`}>
-			<ul class="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 p-4 md:p-0">
-				<li><a href="#sanpham" class="nav-link">Bộ sưu tập</a></li>
-				<li><a href="#vetrangweb" class="nav-link">Về chúng tôi</a></li>
-				<li><a href="#muasam" class="nav-link">Mua sắm</a></li>
-				<li><a href="#tintuc" class="nav-link">Tin tức</a></li>
-				<li><a href="#cuahang" class="nav-link">Cửa hàng</a></li>
-				<li><a href="#lienhe" class="nav-link">Liên hệ</a></li>
-			</ul>
-		</nav>
-
-		<div class="hidden md:flex items-center gap-6">
-			<button class="text-sm font-medium">VIE / ENG</button>
-			<button class="p-2">
-				<img src="/search.png" alt="Search" class="w-5 h-5"/>
-			</button>
-			<button class="p-2">
-				<img src="/shop.png" alt="Shop" class="w-5 h-5"/>
-			</button>
-		</div>
-
-		<button 
-			class="md:hidden p-2" 
-			on:click={() => navOpen = !navOpen}
-			aria-label="Toggle menu"
-		>
-			<div class="w-6 h-4 flex flex-col justify-between">
-				<span class="w-full h-0.5 bg-black"></span>
-				<span class="w-full h-0.5 bg-black"></span>
-				<span class="w-full h-0.5 bg-black"></span>
-			</div>
-		</button>
-	</div>
+<header class = "header">
+	<div class="brand">
+    	<img src="/logo.png" alt="Logo" class="Img"/>
+    	<div class="logo">{logo}</div>
+		<nav class:open={navOpen}>
+      <ul class = "selectionbar">
+          <li><a href="#sanpham">Bộ sưu tập</a></li>
+    	  <li><a href="#vetrangweb">Về chúng tôi</a></li>
+    	  <li><a href="#muasam">Mua sắm</a></li>
+    	  <li><a href="#tintuc">Tin tức</a></li>
+    	  <li><a href="#cuahang">Cửa hàng</a></li>
+    	  <li><a href="#lienhe">Liên hệ</a></li>
+      </ul>
+	  <div class="underline-indicator"></div> 
+    </nav>
+	<div class="header-icons">
+      <div class="lang-switcher">VIE / ENG</div>
+      <img src="/search.png" alt="Search" class="search-icon"/>
+      <img src="/shop.png" alt="Shop" class="shop-icon"/>
+    </div>
+    <button class="hamburger" on:click={() => navOpen = !navOpen} aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+  	</div>
 </header>
 
 <style>
-	.nav-link {
-		@apply text-sm uppercase font-light hover:text-[#51843C] transition-colors relative;
+	.header{
+		position: relative;
+        max-width: 1280px;
+        width: 100%;
+        max-width: 100%;
+        height: 61px;
+        background-color: #FFFFFF;
+		padding-left: 25px;
+		padding-right: 50px;
+	}
+	.brand {
+        display: flex;
+        align-items: center;
+  	}
+  	.logo {
+        font-size: 22px;  
+	    font-weight: bold;            
+        line-height: 1;             
+        color: #51843C;
+        font-family: 'Arial', sans-serif;
+	    letter-spacing: -0.02em;
+  	}
+
+	nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 40px;
+        margin-left: 50px;
+    }
+
+	/* TaskBar style */
+    .selectionbar a {
+        color: #222222;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 300;
+        font-family: 'Source Sans Pro', sans-serif;
+        position: relative; /* để chứa pseudo-element */
+        padding-bottom: 4px; /* tạo khoảng dưới để hiện underline */
+        transition: color 0.3s ease;
+    }
+
+/* Pseudo-element tạo thanh đen */
+.selectionbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 0;
+  background-color: black;
+  transition: width 0.3s ease;
+}
+
+/* Khi hover thì mở rộng chiều ngang của thanh */
+.selectionbar a:hover::after {
+  width: 100%;
+}
+	/*logo*/
+	.Img{
+		width: 52px;
+		height: 52px;
+		top: -8.5px;
+		left: -6px;
+	}
+	.header-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+    }
+    /* Icon ngôn ngữ */
+    .lang-switcher {
+	  margin-left:50px;
+    cursor: pointer;
+    user-select: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    font-weight: 500;
+    }
+    /* Icon tìm kiếm */
+    .search-icon {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      fill: #333;
+      transition: fill 0.3s ease;
+    }
+    .shop-icon {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      fill: #333;
+      transition: fill 0.3s ease;
+      
+    }
+
+
+	@media (min-width: 414px) {
+		.header {
+			/* width: 1280px; */
+            max-width: 100%;
+            margin: 0 auto;
+            height: 92px
+		}
 	}
 
-	.nav-link::after {
-		content: '';
-		@apply absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300;
+	.hamburger {
+	  display: none;
+	  flex-direction: column;
+	  justify-content: center;
+	  width: 32px;
+	  height: 32px;
+	  background: none;
+	  border: none;
+	  cursor: pointer;
+	  margin-left: auto;
+	}
+	.hamburger span {
+	  /* display: block; */
+	  height: 3px;
+	  width: 100%;
+	  background: #222;
+	  margin: 4px 0;
+	  border-radius: 2px;
+	  transition: 0.3s;
 	}
 
-	.nav-link:hover::after {
-		@apply w-full;
+	@media (max-width: 768px) {
+	  .hamburger {
+		display: flex;
+	  }
+	  nav ul,
+	  .header-icons {
+		display: none;
+	  }
+	  nav.open ul {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 60px;
+		left: 0;
+		right: 0;
+		background: #fff;
+		z-index: 100;
+		gap: 0;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+	  }
 	}
+
 </style>
